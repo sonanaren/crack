@@ -1,27 +1,37 @@
 import React from "react";
 import AppBar from "@material-ui/core/AppBar";
-import Typography from "@material-ui/core/Typography";
-import { MenuItem, MenuList, IconButton, Toolbar } from "@material-ui/core";
+import {
+  MenuItem,
+  MenuList,
+  IconButton,
+  Toolbar,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-import MenuIcon from "@material-ui/icons/Menu";
+import logo from "../pngkit_vector-art-png_2347278.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
   },
+  logo: {
+    width: "50px",
+  },
   paper: {
     marginRight: theme.spacing(2),
   },
+  title: {
+    flexGrow: 1,
+  },
+  offset: theme.mixins.toolbar,
 }));
 
 export default function NavBar() {
   const classes = useStyles();
-  const anchorRef = React.useRef(null);
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <IconButton
             edge="start"
@@ -29,19 +39,23 @@ export default function NavBar() {
             color="inherit"
             aria-label="menu"
           >
-            <MenuIcon />
+            <img src={logo} alt="Logo" className={classes.logo} />
           </IconButton>
         </Toolbar>
 
-        <MenuList>
+        <MenuList className={classes.title}>
           <MenuItem component={Link} to="/">
             Bikes
           </MenuItem>
-          <MenuItem component={Link} to="/">
+          <MenuItem component={Link} to="/cars">
             Cars
+          </MenuItem>
+          <MenuItem component={Link} to="/login">
+            Login
           </MenuItem>
         </MenuList>
       </AppBar>
+      <div className={classes.offset} />
     </div>
   );
 }

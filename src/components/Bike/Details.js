@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "../App.css";
+import "../../App.css";
 import axios from "axios";
-import { Container, TextField, IconButton, Input } from "@material-ui/core";
+import { Container, Input } from "@material-ui/core";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography
+} from "@material-ui/core";
 
-class BikeDetails extends Component {
+class Details extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,35 +44,38 @@ class BikeDetails extends Component {
 
   render() {
     const bike = this.state.bike;
-    let BikeItem = (
-      <div>
-        <table className="table table-hover table-dark">
-          <tbody>
-            <tr>
-              <td>Name</td>
-              <td>{bike.name}</td>
-            </tr>
-            <tr>
-              <td>Company</td>
-              <td>{bike.company}</td>
-            </tr>
-            <tr>
-              <td>Description</td>
-              <td>{bike.description}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+
+    let bikeImage;
+
+    if (bike.images) {
+      bikeImage = (
+        <CardMedia
+          style={{
+            height: 0,
+            paddingTop: "56.25%",
+            backgroundSize: "initial",
+          }}
+          image={bike.images[0].image}
+          title={bike.model_name}
+        />
+      );
+    }
+
+    let bikeItem = (
+      <Card>
+        {bikeImage}
+        <CardContent>
+          <Typography gutterBottom variant="headline" component="h2">
+            {bike.model_name}
+          </Typography>
+          <Typography component="p">{bike.description}</Typography>
+        </CardContent>
+      </Card>
     );
 
     return (
       <Container>
-        <div className="row">
-          <div className="col-md-8 m-auto">
-            <p className="lead text-center">Bike Details</p>
-          </div>
-        </div>
-        <div>{BikeItem}</div>
+        <div>{bikeItem}</div>
 
         <div className="row">
           <div className="col-md-6">
@@ -96,4 +105,4 @@ class BikeDetails extends Component {
   }
 }
 
-export default BikeDetails;
+export default Details;
