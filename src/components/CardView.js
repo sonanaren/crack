@@ -37,7 +37,7 @@ const CardView = (props) => {
               style={{
                 height: 0,
                 paddingTop: "56.25%",
-                backgroundSize: "initial",
+                backgroundSize: "contain",
               }}
               image={item.images[0].image}
               title={item.model_name}
