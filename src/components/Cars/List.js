@@ -50,7 +50,7 @@ class List extends Component {
           <div className="row">
             <div className="col-md-11">
               <Link
-                to="/add-bike"
+                to="/add-car"
                 className="btn btn-outline-warning float-right"
               >
                 <MotorcycleOutlinedIcon />
