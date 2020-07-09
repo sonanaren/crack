@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Paper,
   withStyles,
@@ -7,8 +7,8 @@ import {
   Button,
   FormControlLabel,
   Checkbox,
-} from "@material-ui/core";
-import { Face, Fingerprint } from "@material-ui/icons";
+} from '@material-ui/core';
+import { Face, Fingerprint } from '@material-ui/icons';
 
 const styles = (theme) => ({
   margin: {
@@ -65,7 +65,7 @@ class LoginTab extends React.Component {
               <Button
                 disableFocusRipple
                 disableRipple
-                style={{ textTransform: "none" }}
+                style={{ textTransform: 'none' }}
                 variant="text"
                 color="primary"
               >
@@ -73,11 +73,11 @@ class LoginTab extends React.Component {
               </Button>
             </Grid>
           </Grid>
-          <Grid container justify="center" style={{ marginTop: "10px" }}>
+          <Grid container justify="center" style={{ marginTop: '10px' }}>
             <Button
               variant="outlined"
               color="primary"
-              style={{ textTransform: "none" }}
+              style={{ textTransform: 'none' }}
             >
               Login
             </Button>

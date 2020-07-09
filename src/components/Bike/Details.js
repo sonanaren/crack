@@ -1,14 +1,9 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "../../App.css";
-import axios from "axios";
-import { Container, Input } from "@material-ui/core";
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Typography
-} from "@material-ui/core";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import '../../App.css';
+import axios from 'axios';
+import { Container, Input } from '@material-ui/core';
+import { Card, CardContent, CardMedia, Typography } from '@material-ui/core';
 
 class Details extends Component {
   constructor(props) {
@@ -20,25 +15,25 @@ class Details extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8082/api/bikes/" + this.props.match.params.id)
+      .get('http://localhost:8082/api/bikes/' + this.props.match.params.id)
       .then((res) => {
         this.setState({
           bike: res.data,
         });
       })
       .catch((err) => {
-        console.log("No data");
+        console.log('No data');
       });
   }
 
   onDeleteClick(id) {
     axios
-      .delete("http://localhost:8082/api/bikes/" + id)
+      .delete('http://localhost:8082/api/bikes/' + id)
       .then((res) => {
-        this.props.history.push("/");
+        this.props.history.push('/');
       })
       .catch((err) => {
-        console.log("Error deleting");
+        console.log('Error deleting');
       });
   }
 
@@ -52,8 +47,8 @@ class Details extends Component {
         <CardMedia
           style={{
             height: 0,
-            paddingTop: "56.25%",
-            backgroundSize: "initial",
+            paddingTop: '56.25%',
+            backgroundSize: 'initial',
           }}
           image={bike.images[0].image}
           title={bike.model_name}

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Card,
   CardActions,
@@ -7,19 +7,19 @@ import {
   Button,
   Typography,
   IconButton,
-} from "@material-ui/core";
+} from '@material-ui/core';
 import {
   Favorite as FavoriteIcon,
   Share as ShareIcon,
-} from "@material-ui/icons";
-import { Link } from "react-router-dom";
-import "../App.css";
-import { makeStyles } from "@material-ui/core/styles";
+} from '@material-ui/icons';
+import { Link } from 'react-router-dom';
+import '../App.css';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   engineCC: {
     marginRight: theme.spacing(8),
-  }
+  },
 }));
 
 const CardView = (props) => {
@@ -36,8 +36,8 @@ const CardView = (props) => {
             <CardMedia
               style={{
                 height: 0,
-                paddingTop: "56.25%",
-                backgroundSize: "contain",
+                paddingTop: '56.25%',
+                backgroundSize: 'contain',
               }}
               image={item.images[0].image}
               title={item.model_name}
@@ -47,7 +47,13 @@ const CardView = (props) => {
             <Typography gutterBottom variant="headline" component="h2">
               {item.model_name}
             </Typography>
-            <Typography variant="subtitle2" display="inline" className={classes.engineCC}>Engine: {item.engine.cc} CC</Typography>
+            <Typography
+              variant="subtitle2"
+              display="inline"
+              className={classes.engineCC}
+            >
+              Engine: {item.engine.cc} CC
+            </Typography>
             <Typography variant="subtitle2" display="inline">
               Mileage: {item.fuel_consumptions.mileage}
             </Typography>

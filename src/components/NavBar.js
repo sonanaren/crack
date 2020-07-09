@@ -1,21 +1,16 @@
-import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import {
-  MenuItem,
-  MenuList,
-  IconButton,
-  Toolbar,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
-import logo from "../pngkit_vector-art-png_2347278.png";
+import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import { MenuItem, MenuList, IconButton, Toolbar } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
+import logo from '../pngkit_vector-art-png_2347278.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
+    display: 'flex',
   },
   logo: {
-    width: "50px",
+    width: '50px',
   },
   paper: {
     marginRight: theme.spacing(2),
@@ -39,12 +34,14 @@ export default function NavBar() {
             color="inherit"
             aria-label="menu"
           >
-            <img src={logo} alt="Logo" className={classes.logo} />
+            <Link to="/" className="btn btn-outline-warning float-right">
+              <img src={logo} alt="Logo" className={classes.logo} />
+            </Link>
           </IconButton>
         </Toolbar>
 
         <MenuList className={classes.title}>
-          <MenuItem component={Link} to="/">
+          <MenuItem component={Link} to="/bikes">
             Bikes
           </MenuItem>
           <MenuItem component={Link} to="/cars">

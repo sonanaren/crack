@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import "../App.css";
-import { Container, TextField, IconButton, Input } from "@material-ui/core";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import '../App.css';
+import { Container, TextField, IconButton, Input } from '@material-ui/core';
 
 class BikeUpdate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      type: "",
-      company: "",
-      description: "",
-      published_date: "",
+      name: '',
+      type: '',
+      company: '',
+      description: '',
+      published_date: '',
     };
   }
 
   componentDidMount() {
     axios
-      .get("http://localhost:8082/api/bikes/" + this.props.match.params.id)
+      .get('http://localhost:8082/api/bikes/' + this.props.match.params.id)
       .then((res) => {
         this.setState({
           name: res.data.name,
@@ -29,7 +29,7 @@ class BikeUpdate extends Component {
         });
       })
       .catch((err) => {
-        console.log("Error Updating");
+        console.log('Error Updating');
       });
   }
 
@@ -50,14 +50,14 @@ class BikeUpdate extends Component {
 
     axios
       .put(
-        "http://localhost:8082/api/bikes/" + this.props.match.params.id,
+        'http://localhost:8082/api/bikes/' + this.props.match.params.id,
         data
       )
       .then((res) => {
-        this.props.history.push("/show-bike/" + this.props.match.params.id);
+        this.props.history.push('/show-bike/' + this.props.match.params.id);
       })
       .catch((err) => {
-        console.log("Error updating.");
+        console.log('Error updating.');
       });
   };
 

@@ -1,7 +1,7 @@
-import React, { Component, useState, useEffect } from "react";
-import { connect } from "react-redux";
-import "../../App.css";
-import axios from "axios";
+import React, { Component, useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import '../../App.css';
+import axios from 'axios';
 import {
   Container,
   TextField,
@@ -11,73 +11,73 @@ import {
   Typography,
   Checkbox,
   FormControlLabel,
-} from "@material-ui/core";
-import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+} from '@material-ui/core';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 class Add extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      model_code: "",
-      model_name: "",
-      price_ex_shoowroom: "",
-      description: "",
-      cc: "",
-      no_of_cylinders: "",
-      max_power: "",
-      max_torque: "",
-      valves_per_cylinder: "",
-      fuel_delivery: "",
-      cooling_system: "",
-      starting_mechanism: "",
-      tank_capacity: "",
-      reserve_fuel_capacity: "",
-      mileage: "",
-      riding_range: "",
-      no_of_gears: "",
-      clutch: "",
-      kerb_weight: "",
-      length: "",
-      width: "",
-      height: "",
-      wheelbase: "",
-      ground_clearance: "",
-      seat_height: "",
-      front_brake_type: "",
-      rear_brake_type: "",
-      front_disk_drum_size: "",
-      rear_disk_drum_size: "",
-      code: "",
-      chassis_type: "",
-      front_suspension: "",
-      rear_suspension: "",
-      wheel_size: "",
-      wheel_type: "",
-      front_tyre: "",
-      rear_tyre: "",
-      speedometer: "Digital",
-      technometer: "Analogue",
-      gear_indicator: "1",
-      fuel_warning_indicator: "1",
-      fuel_gauge: "1",
-      low_oil_indicator: "1",
-      low_battery_indicator: "1",
-      pillion_seat: "1",
-      pillion_grabrail: "0",
-      engine_kill_switch: "1",
-      clock: "1",
-      tripmeter_type: "Digital",
-      tripmeter_count: "1",
-      pass_light: "1",
-      assist_slipper_clutch: "1",
-      usb_charging: "1",
-      variables_valves_actuation: "1",
-      super_wide_tyre: "1",
-      dual_channel_abs: "1",
-      published_date: "",
-      image: "",
-      active: "1",
+      model_code: '',
+      model_name: '',
+      price_ex_shoowroom: '',
+      description: '',
+      cc: '',
+      no_of_cylinders: '',
+      max_power: '',
+      max_torque: '',
+      valves_per_cylinder: '',
+      fuel_delivery: '',
+      cooling_system: '',
+      starting_mechanism: '',
+      tank_capacity: '',
+      reserve_fuel_capacity: '',
+      mileage: '',
+      riding_range: '',
+      no_of_gears: '',
+      clutch: '',
+      kerb_weight: '',
+      length: '',
+      width: '',
+      height: '',
+      wheelbase: '',
+      ground_clearance: '',
+      seat_height: '',
+      front_brake_type: '',
+      rear_brake_type: '',
+      front_disk_drum_size: '',
+      rear_disk_drum_size: '',
+      code: '',
+      chassis_type: '',
+      front_suspension: '',
+      rear_suspension: '',
+      wheel_size: '',
+      wheel_type: '',
+      front_tyre: '',
+      rear_tyre: '',
+      speedometer: 'Digital',
+      technometer: 'Analogue',
+      gear_indicator: '1',
+      fuel_warning_indicator: '1',
+      fuel_gauge: '1',
+      low_oil_indicator: '1',
+      low_battery_indicator: '1',
+      pillion_seat: '1',
+      pillion_grabrail: '0',
+      engine_kill_switch: '1',
+      clock: '1',
+      tripmeter_type: 'Digital',
+      tripmeter_count: '1',
+      pass_light: '1',
+      assist_slipper_clutch: '1',
+      usb_charging: '1',
+      variables_valves_actuation: '1',
+      super_wide_tyre: '1',
+      dual_channel_abs: '1',
+      published_date: '',
+      image: '',
+      active: '1',
     };
     this.initialState = { ...this.state };
   }
@@ -100,13 +100,13 @@ class Add extends Component {
     }
 
     axios
-      .post("http://localhost:8082/api/bikes", formData)
+      .post('http://localhost:8082/api/bikes', formData)
       .then((res) => {
         this.setState(this.initialState);
-        this.props.history.push("/");
+        this.props.history.push('/');
       })
       .catch((err) => {
-        console.log("Bike not added");
+        console.log('Bike not added');
       });
   };
 
@@ -122,10 +122,10 @@ class Add extends Component {
           autoComplete="off"
         >
           <div>
-            <Typography variant={"h4"}>Add new bike</Typography>
+            <Typography variant={'h4'}>Add new bike</Typography>
             <Grid container spacing={2}>
               <Grid item lg={3} xs={12} xl={3} sm={6}>
-                <Typography variant={"subtitle1"}>General</Typography>
+                <Typography variant={'subtitle1'}>General</Typography>
                 <div className="form-group">
                   <TextField
                     name="model_code"
@@ -170,7 +170,7 @@ class Add extends Component {
                 </div>
               </Grid>
               <Grid item lg={3} xs={12} xl={3} sm={6}>
-                <Typography variant={"subtitle1"}>Engine</Typography>
+                <Typography variant={'subtitle1'}>Engine</Typography>
 
                 <div className="form-group">
                   <TextField
@@ -254,7 +254,7 @@ class Add extends Component {
                 </div>
               </Grid>
               <Grid item lg={3} xs={12} xl={3} sm={6}>
-                <Typography variant={"subtitle1"}>Fuel Consumptions</Typography>
+                <Typography variant={'subtitle1'}>Fuel Consumptions</Typography>
                 <div className="form-group">
                   <TextField
                     name="tank_capacity"
@@ -298,7 +298,7 @@ class Add extends Component {
                 </div>
               </Grid>
               <Grid item lg={3} xs={12} xl={3} sm={6}>
-                <Typography variant={"subtitle1"}>Transmission</Typography>
+                <Typography variant={'subtitle1'}>Transmission</Typography>
                 <div className="form-group">
                   <TextField
                     name="no_of_gears"
@@ -321,7 +321,7 @@ class Add extends Component {
                 </div>
               </Grid>
               <Grid item lg={3} xs={12} xl={3} sm={6}>
-                <Typography variant={"subtitle1"}>
+                <Typography variant={'subtitle1'}>
                   Dimensions and Weight
                 </Typography>
                 <div className="form-group">
@@ -397,7 +397,7 @@ class Add extends Component {
                 </div>
               </Grid>
               <Grid item lg={3} xs={12} xl={3} sm={6}>
-                <Typography variant={"subtitle1"}>Braking</Typography>
+                <Typography variant={'subtitle1'}>Braking</Typography>
                 <div className="form-group">
                   <TextField
                     name="front_brake_type"
@@ -440,7 +440,7 @@ class Add extends Component {
                 </div>
               </Grid>
               <Grid item lg={3} xs={12} xl={3} sm={6}>
-                <Typography variant={"subtitle1"}>Variant</Typography>
+                <Typography variant={'subtitle1'}>Variant</Typography>
                 <div className="form-group">
                   <TextField
                     name="code"
@@ -453,7 +453,7 @@ class Add extends Component {
                 </div>
               </Grid>
               <Grid item lg={3} xs={12} xl={3} sm={6}>
-                <Typography variant={"subtitle1"}>
+                <Typography variant={'subtitle1'}>
                   Chassis Suspension
                 </Typography>
                 <div className="form-group">
@@ -488,7 +488,7 @@ class Add extends Component {
                 </div>
               </Grid>
               <Grid item lg={3} xs={12} xl={3} sm={6}>
-                <Typography variant={"subtitle1"}>Wheel Tyres</Typography>
+                <Typography variant={'subtitle1'}>Wheel Tyres</Typography>
                 <div className="form-group">
                   <TextField
                     name="wheel_size"
@@ -532,7 +532,7 @@ class Add extends Component {
               </Grid>
 
               <Grid item lg={3} xs={12} xl={3} sm={6}>
-                <Typography variant={"subtitle1"}>Standard Features</Typography>
+                <Typography variant={'subtitle1'}>Standard Features</Typography>
                 <div className="form-group">
                   <TextField
                     name="speedometer"
@@ -654,7 +654,7 @@ class Add extends Component {
                 </div>
               </Grid>
               <Grid item lg={3} xs={12} xl={3} sm={6}>
-                <Typography variant={"subtitle1"}>Key Features</Typography>
+                <Typography variant={'subtitle1'}>Key Features</Typography>
 
                 <div className="form-group">
                   <FormControlLabel
@@ -701,7 +701,7 @@ class Add extends Component {
                 <div className="form-group">
                   <input
                     accept="image/*"
-                    style={{ display: "none" }}
+                    style={{ display: 'none' }}
                     id="icon-button-photo"
                     name="image"
                     onChange={this.onFileChange}

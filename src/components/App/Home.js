@@ -2,41 +2,40 @@ import React, { Component } from 'react';
 import '../../App.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import API from '../API/API';
 import CardView from '../CardView.js';
 import Banner from '../Banner.js';
 import { Grid, Container } from '@material-ui/core';
 import MotorcycleOutlinedIcon from '@material-ui/icons/MotorcycleOutlined';
 
-class List extends Component {
+export default class Home extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       bikes: [],
-      searchString: '',
+      cars: [],
+      featured: [],
     };
   }
 
   componentDidMount() {
-    axios
-      .get('http://localhost:8082/api/bikes')
-      .then((res) => {
-        this.setState({
-          bikes: res.data,
-        });
-      })
-      .catch((err) => {
-        console.log('No bikes');
+    const api = new API({ url: 'http://localhost:8082/api' });
+    api.createEntity({ name: 'bikes' });
+    api.endpoints.bikes.getAll().then((res) => {
+      this.setState({
+        bikes: res.data,
       });
+    });
   }
-
   render() {
     const bikes = this.state.bikes;
-    let bikeList;
+    let list;
 
     if (!bikes) {
-      bikeList = 'No data!';
+      list = 'No data!';
     } else {
-      bikeList = bikes.map((item, k) => (
+      list = bikes.map((item, k) => (
         <Grid item xs={12} sm={6} lg={4} xl={3}>
           <CardView item={item} key={k} routeUri="/bike-details" />
         </Grid>
@@ -45,26 +44,12 @@ class List extends Component {
 
     return (
       <div>
-        <Banner imgSrc="images/bike-banner.jpg" />
         <Container>
-          <div className="row">
-            <div className="col-md-11">
-              <Link
-                to="/add-bike"
-                className="btn btn-outline-warning float-right"
-              >
-                <MotorcycleOutlinedIcon />
-              </Link>
-            </div>
-          </div>
-
           <Grid container spacing={3} style={{ padding: 24 }}>
-            {bikeList}
+            {list}
           </Grid>
         </Container>
       </div>
     );
   }
 }
-
-export default List;
