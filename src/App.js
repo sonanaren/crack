@@ -11,26 +11,36 @@ import CarList from './components/Cars/List';
 import CarDetails from './components/Cars/Details';
 import login from './components/App/loginForm';
 import Home from './components/App/Home';
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 
-function App() {
-  return (
-    <React.StrictMode>
-      <Router>
-        <div>
-          <NavBar />
-          <Route exact path="/" component={Home} />
-          <Route path="/bikes" component={BikeList} />
-          <Route path="/add-bike" component={BikeAdd} />
-          <Route path="/edit-bike/:id" component={BikeUpdate} />
-          <Route path="/bike-details/:id" component={BikeDetails} />
-          <Route path="/cars" component={CarList} />
-          <Route path="/cars-details/:id" component={CarDetails} />
-          <Route path="/add-car" component={CarAdd} />
-          <Route path="/login" component={login} />
-        </div>
-      </Router>
-    </React.StrictMode>
-  );
+const client = new ApolloClient({
+  uri: 'http://localhost:8082/graphql',
+  cache: new InMemoryCache(),
+});
+
+class App extends Component {
+  render() {
+    return (
+      <ApolloProvider client={client}>
+        <React.StrictMode>
+          <Router>
+            <div>
+              <NavBar />
+              <Route exact path="/" component={Home} />
+              <Route path="/bikes" component={BikeList} />
+              <Route path="/add-bike" component={BikeAdd} />
+              <Route path="/edit-bike/:id" component={BikeUpdate} />
+              <Route path="/bike-details/:id" component={BikeDetails} />
+              <Route path="/cars" component={CarList} />
+              <Route path="/cars-details/:id" component={CarDetails} />
+              <Route path="/add-car" component={CarAdd} />
+              <Route path="/login" component={login} />
+            </div>
+          </Router>
+        </React.StrictMode>
+      </ApolloProvider>
+    );
+  }
 }
 
 export default App;
